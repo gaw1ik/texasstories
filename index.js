@@ -153,9 +153,9 @@ inOrOut = "out";
 
 
 
-// window.onload = run();
+window.onload = run();
 
-document.addEventListener("DOMContentLoaded", run);
+// document.addEventListener("DOMContentLoaded", run);
 
 
 
