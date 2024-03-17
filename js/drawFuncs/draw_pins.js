@@ -19,7 +19,7 @@ function draw_pins(object) {
         let pin_object = {};
         pin_object.x = PINS[i].x;
         pin_object.y = PINS[i].y;
-        pin_object.rad = 0.01;
+        pin_object.rad = pinRad;
 
         
 

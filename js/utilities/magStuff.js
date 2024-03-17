@@ -64,17 +64,38 @@ function on_mouseclick_canvasWindow(e) {
 
     console.log("click");
 
-    let trigDist = 10;
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
 
+    // let trigDist = 10;
+
+    let pinProx = 10000; // initialize with big value
+    let pinNumClicked = -1; // initialize with negative value, meaning nothing has been clicked
 
     for(let i=0; i<N_PINS; i++) {
 
         let [pinProx_X, pinProx_Y] = calcProx(PINS[i]);
 
+        // console.log("[pinProx_X, pinProx_Y]",[pinProx_X, pinProx_Y]);
 
-        if( pinProx_X<trigDist && pinProx_Y<trigDist ) {
-            PINS[i].wasClicked = 1;
-            // console.log("clicked PIN ",i);
+
+        let pinProxNew = (pinProx_X**2 + pinProx_Y**2)**0.5; // straight-line distance
+
+        // console.log("pinProxNew<pinProx",pinProxNew<pinProx);
+        // console.log("pinProx<trigDist",pinProx<trigDist);
+        // console.log("pinProxNew",pinProxNew);
+        // console.log("trigDist",trigDist);
+
+
+
+
+        if( pinProxNew<pinProx && pinProxNew<trigDist) { // if it's within trigger distance and less than the previous one
+
+            pinNumClicked = i;
+            pinProx = pinProxNew;
+            // console.log("pinProxNew",pinProxNew);
+
+            
             // drawAll();
         } else {
             // PINS[i].wasClicked = 0;
@@ -83,18 +104,27 @@ function on_mouseclick_canvasWindow(e) {
 
     }
 
+
+    
     //// assume initially there was not a click
     var wasThereAPinClick = 0;
 
-    //// check all the pins to see if any were clicked
-    for(let i=0; i<N_PINS; i++) { 
-
-        if( PINS[i].wasClicked ) {
-            wasThereAPinClick = 1;
-            pinNumClicked = i;
-        }
-        
+    if( pinNumClicked!=-1 ) {
+        wasThereAPinClick = 1;
+        PINS[pinNumClicked].wasClicked = 1;
     }
+
+    
+
+    //// check all the pins to see if any were clicked
+    // for(let i=0; i<N_PINS; i++) { 
+
+    //     if( PINS[i].wasClicked ) {
+    //         wasThereAPinClick = 1;
+    //         pinNumClicked = i;
+    //     }
+        
+    // }
 
     //// if there was a Pin Click set that Pin's state to Active and Update Text
     if( wasThereAPinClick ) {
