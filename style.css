@@ -1,0 +1,67 @@
+
+
+:root {
+
+}
+
+/* html {
+  background-color: darkgray;
+} */
+
+
+body {
+  /* background-color: black; */
+  /* background-color: white; */
+    /* background-color: hsl(0,0%,4%); */
+
+  margin:0;
+
+  /* leave it to hide the scrollbars */
+  overflow: hidden;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+.pageContainer {
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction: row;
+  /* align-items: center; */
+  align-content: center;
+  justify-content: center;
+  /* background-color: black; */
+  /* background-color: gray; */
+  background-color: white;
+}
+
+
+.myCanvas {
+  position:absolute;
+  /* width:800px;
+  height: 800px; */
+  overflow:hidden;
+  /* background-color: aliceblue; */
+  /* outline:1px solid black; */
+
+
+}
+
+#canvasContainer {
+  position: relative;
+  width:800px;
+}
+
+
+#textContainer {
+  width:400px;
+  overflow-y: scroll;
+}
+
+#canvasWindow {
+  /* outline:1px solid black; */
+}
