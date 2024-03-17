@@ -161,7 +161,27 @@ document.addEventListener("DOMContentLoaded", run);
 
 function run() {
 
+    if(screen.height/screen.width > 1) {
+        console.log("Device is Mobile")
+        deviceType = "Mobile";
+        trigDist = 50;
+        pinRad = 0.015;
+        canvasWindow.addEventListener('click', on_mouseclick_canvasWindow);
+    } else {
+        console.log("Device is Desktop")
+        deviceType = "Desktop";
+        trigDist = 10;
+        pinRad = 0.010;
+        canvasWindow.addEventListener('mousemove', on_mousemove_canvasWindow);
+        canvasWindow.addEventListener('click', on_mouseclick_canvasWindow);
+    }
+
+
+
+
     buildScene(); 
+
+
 
 
     setup_auxCanvases();
@@ -176,8 +196,7 @@ function run() {
 
     // // KEY PRESSES AND ZOOM TOOL
     // document.addEventListener('keypress', on_keyPress);
-    canvasWindow.addEventListener('mousemove', on_mousemove_canvasWindow);
-    canvasWindow.addEventListener('click', on_mouseclick_canvasWindow);
+
 
    
   
